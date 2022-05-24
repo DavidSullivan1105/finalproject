@@ -13,12 +13,16 @@ namespace KomodoCafe.repository
         //Create
         public void AddMenuToDataBase(Menu menu)
         {
-            _menuDB.Add(Menu);
+            _menuDB.Add(menu);
         }
-
+        
 
 
         //Read
+        public List<Menu> GetMenu()
+        {
+            return _menuDB;
+        }
 
 
 

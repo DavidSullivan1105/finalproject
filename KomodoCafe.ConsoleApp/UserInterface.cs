@@ -17,15 +17,35 @@ namespace KomodoCafe.ConsoleApp
         {
             _repo.SeedMenuData();
 
-            int userInput = _console.GetUserInputInt();
+            while(isRunning)
+            {
+                _console.PrintMainMenu();
+
+                int userInput = _console.GetUserInputInt();
+            }
 
         }
 
+
         public void UserInputPortal(int userInputNum)
         {
-            while(isRunning)
+            switch(userInputNum)
             {
-                
+                case 1:
+                //ViewMenu();
+                break;
+                case 2:
+                //OrderValueMeal();
+                break;
+                case 3:
+                //CreateYourOwnMeal();
+                break;
+                case 4:
+                //LeaveAReview();
+                break;
+                case 5:
+                //ExitApp();
+                break;
             }
         }
     }

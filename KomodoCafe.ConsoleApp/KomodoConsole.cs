@@ -24,6 +24,23 @@ namespace KomodoCafe.ConsoleApp
             return Convert.ToInt32(Console.ReadLine());
         }
 
+        public void PrintMenu(Menu item)
+        {
+            Console.WriteLine($"{item.MealNumber}\n" +
+                            $"{item.MealName}\n" +
+                            $"{item.Description}\n" +
+                            $"{item.Ingredients}\n" +
+                            $"{item.Price}\n" +
+                            $"{item.SideOptions}\n" +
+                            $"{item.DrinkOptions}");
+        }
+
+        public void PrintTotalMenu (List<Menu> items)
+        {
+            foreach(Menu x in items)
+            PrintMenu(x);
+        }
+
         
 
 
