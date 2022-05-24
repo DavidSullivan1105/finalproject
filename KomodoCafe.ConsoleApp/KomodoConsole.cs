@@ -19,7 +19,7 @@ namespace KomodoCafe.ConsoleApp
             );
         }
             
-        public int GetUserInput()
+        public int GetUserInputInt()
         {
             return Convert.ToInt32(Console.ReadLine());
         }

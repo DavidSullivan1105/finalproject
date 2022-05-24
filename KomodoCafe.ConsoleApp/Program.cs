@@ -1,2 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using KomodoCafe.ConsoleApp;
+
+
+UserInterface _ui = new UserInterface();
+
+_ui.Run();
