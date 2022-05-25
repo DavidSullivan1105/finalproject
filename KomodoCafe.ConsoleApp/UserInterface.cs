@@ -32,25 +32,51 @@ namespace KomodoCafe.ConsoleApp
             switch(userInputNum)
             {
                 case 1:
-                //ViewMenu();
+                ViewMenu();
                 break;
                 case 2:
-                //OrderValueMeal();
+                CreateAMeal();
                 break;
                 case 3:
-                //CreateYourOwnMeal();
+                //DeleteAMeal;
                 break;
                 case 4:
-                //LeaveAReview();
-                break;
-                case 5:
                 //ExitApp();
                 break;
+                
             }
         }
-    }
 
-        
+        private void ViewMenu()
+        {
+            List<Menu> totalMenu = _repo.GetMenu();
+
+            _console.PrintTotalMenu(totalMenu);
+
+            _console.PressAnyKeyToContinue();
+        }
+
+        private void CreateAMeal()
+        {
+            _console.EnterAMealNumber();
+            int newMealNum = _console.GetUserInputInt();
+
+            _console.EnterAMealName();
+            string newMealName = _console.GetUserInput();
+
+            _console.EnterADescription();
+            string newMealDescription = _console.GetUserInput();
+
+            _console.EnterAPrice();
+            decimal newMealPrice = _console.GetAPrice();
+        }
+
+    }   
 }
+
+
+
+
+
             
 
