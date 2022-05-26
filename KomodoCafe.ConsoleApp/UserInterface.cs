@@ -38,10 +38,10 @@ namespace KomodoCafe.ConsoleApp
                 CreateAMeal();
                 break;
                 case 3:
-                //DeleteAMeal;
+                DeleteAMeal();
                 break;
                 case 4:
-                //ExitApp();
+                ExitApp();
                 break;
                 
             }
@@ -100,6 +100,13 @@ namespace KomodoCafe.ConsoleApp
                 _console.MealNotFound(mealNumberToDelete);
             }
             _console.PressAnyKeyToContinue();
+        }
+
+        private void ExitApp()
+        {
+            _console.ExitMessage();
+            isRunning = false;
+
         }
 
     }   

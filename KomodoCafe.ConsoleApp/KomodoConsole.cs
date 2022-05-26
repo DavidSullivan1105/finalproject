@@ -70,6 +70,15 @@ namespace KomodoCafe.ConsoleApp
         {
             Console.Write("Enter a Price: ");
         }
+        public void EnterIngredients()
+        {
+
+        }
+
+        public void EnterAMealToDelete()
+        {
+            Console.Write("Please Select a Meal Number To Delete: ");
+        }
 
         public void PressAnyKeyToContinue()
         {
@@ -77,12 +86,31 @@ namespace KomodoCafe.ConsoleApp
             Console.ReadKey();
         }
 
-        
+        public void MealSuccesfullyDeleted(Menu meal)
+        {
+            Console.WriteLine($"{meal.MealNumber} has been deleted");
+        }
 
-        
+        public void SomethingWentWrong()
+        {
+            Console.WriteLine("Oops...something went wrong");
+        }
 
+        public void MealNotFound(int mealNumber)
+        {
+            Console.WriteLine($"{mealNumber} not found.");
+        }
 
-
+        public void ExitMessage()
+        {
+            Console.WriteLine("Have A Nice Day!");
+        }
 
     }
 }
+        
+
+        
+
+
+
