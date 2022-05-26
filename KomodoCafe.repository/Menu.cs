@@ -14,7 +14,7 @@ namespace KomodoCafe.repository
 
         public string Description { get; set; }
 
-        public List<string> Ingredients { get; set; }
+        public string Ingredients { get; set; }
 
         public decimal Price { get; set; }
 
@@ -23,7 +23,7 @@ namespace KomodoCafe.repository
         public Drinks DrinkOptions { get; set; }
 
         //Full Constructor
-        public Menu (int mealNumber, string mealName, string description, List<string> ingredients, decimal price, Sides sideOptions, Drinks drinkOptions)
+        public Menu (int mealNumber, string mealName, string description, string ingredients, decimal price, Sides sideOptions, Drinks drinkOptions)
         {
             MealNumber = mealNumber;
             MealName = mealName;

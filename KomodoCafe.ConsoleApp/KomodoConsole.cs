@@ -72,7 +72,30 @@ namespace KomodoCafe.ConsoleApp
         }
         public void EnterIngredients()
         {
+            Console.Write("Please list ingredients: ");
+            
+        }
 
+        public void ChooseASide()
+        {
+            Console.Write("Please select a side: \n" +
+                        "1. Fries \n" +
+                        "2. Chips \n" +
+                        "3. MacNCheese \n" +
+                        "4. Salad \n" +
+                        "5. ColeSlaw \n" +
+                        "6. Apple" );
+        }
+
+        public void ChooseADrink()
+        {
+            Console.Write("Please select a drink: \n" +
+                        "1. Coke \n" +
+                        "2. Diet Coke \n" +
+                        "3. Sprite \n" +
+                        "4. Dr Pepper \n" +
+                        "5. Lemonade \n" +
+                        "6. Iced Tea");
         }
 
         public void EnterAMealToDelete()
