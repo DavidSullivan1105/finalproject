@@ -24,6 +24,18 @@ namespace KomodoCafe.repository
             return _menuDB;
         }
 
+        public Menu GetMealByNumber(int mealNumber)
+        {
+            foreach(Menu x in _menuDB)
+            {
+                if(mealNumber == x.MealNumber)
+                {
+                    return x;
+                }
+                return null;
+            }
+        }
+
 
 
         //Update
@@ -31,6 +43,19 @@ namespace KomodoCafe.repository
 
 
         //Delete
+        public bool DeleteMealFromDatabase(Menu meal)
+        {
+            int totalMealsInDB = _menuDB.Count();
+            
+            _menuDB.Remove(meal);
+
+            if(totalMealsInDB == _menuDB.Count())
+            {
+                return false;
+            }
+
+            return true;
+        }
 
 
 

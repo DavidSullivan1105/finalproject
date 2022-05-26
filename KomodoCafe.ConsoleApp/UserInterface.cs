@@ -67,8 +67,39 @@ namespace KomodoCafe.ConsoleApp
             _console.EnterADescription();
             string newMealDescription = _console.GetUserInput();
 
+
+
             _console.EnterAPrice();
             decimal newMealPrice = _console.GetAPrice();
+        }
+
+        private void DeleteAMeal()
+        {
+            ViewMenu();
+
+            _console.EnterAMealToDelete();
+            int mealNumberToDelete = _console.GetUserInputInt();
+
+            Menu mealToDelete = _repo.GetMealByNumber(mealNumberToDelete);
+
+            if(mealToDelete != null)
+            {
+                bool isSuccess = _repo.DeleteMealFromDatabase(mealToDelete);
+
+                if(isSuccess)
+                {
+                    _console.MealSuccesfullyDeleted(mealToDelete);
+                }
+                else
+                {
+                    _console.SomethingWentWrong();
+                }
+            }
+            else
+            {
+                _console.MealNotFound(mealNumberToDelete);
+            }
+            _console.PressAnyKeyToContinue();
         }
 
     }   
