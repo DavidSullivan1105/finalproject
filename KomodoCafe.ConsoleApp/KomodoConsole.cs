@@ -9,7 +9,7 @@ namespace KomodoCafe.ConsoleApp
     {
         public void PrintMainMenu ()
         {
-            Console.WriteLine("Welcome to Komodo Cafe Manager!\n" +
+            Console.WriteLine("\nWelcome to Komodo Cafe Manager!\n" +
                             "Please enter the number of your selection:\n" + 
                             "1. View Menu \n" +
                             "2. Create A Meal \n" +
@@ -36,13 +36,13 @@ namespace KomodoCafe.ConsoleApp
 
         public void PrintMenu(Menu item)
         {
-            Console.WriteLine($"{item.MealNumber}\n" +
-                            $"{item.MealName}\n" +
-                            $"{item.Description}\n" +
-                            $"{item.Ingredients}\n" +
-                            $"{item.Price}\n" +
-                            $"{item.SideOptions}\n" +
-                            $"{item.DrinkOptions}");
+            Console.WriteLine($"Meal Number: {item.MealNumber}\n" +
+                            $"Meal Name: {item.MealName}\n" +
+                            $"Description: {item.Description}\n" +
+                            $"Ingredients: {item.Ingredients}\n" +
+                            $"Price: {item.Price}\n" +
+                            $"Side: {item.SideOptions}\n" +
+                            $"Drink: {item.DrinkOptions}");
         }
 
         public void PrintTotalMenu (List<Menu> items)
@@ -84,7 +84,7 @@ namespace KomodoCafe.ConsoleApp
                         "3. MacNCheese \n" +
                         "4. Salad \n" +
                         "5. ColeSlaw \n" +
-                        "6. Apple" );
+                        "6. Apple \n" );
         }
 
         public void ChooseADrink()
@@ -95,7 +95,7 @@ namespace KomodoCafe.ConsoleApp
                         "3. Sprite \n" +
                         "4. Dr Pepper \n" +
                         "5. Lemonade \n" +
-                        "6. Iced Tea");
+                        "6. Iced Tea \n");
         }
 
         public void EnterAMealToDelete()
@@ -126,7 +126,8 @@ namespace KomodoCafe.ConsoleApp
 
         public void ExitMessage()
         {
-            Console.WriteLine("Have A Nice Day!");
+            Console.WriteLine("Have A Nice Day! \n");
+            
         }
 
     }
