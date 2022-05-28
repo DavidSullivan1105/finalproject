@@ -11,7 +11,7 @@ namespace GreenPlan.repository
         public List<Car> _gasolineCarList = new List<Car>();
         public List<Car> _hybridCarList = new List<Car>();
         public List<Car> _electricCarList = new List<Car>(); 
-        public List<Car> _masterList = new List<Car>();
+        //public List<Car> _masterList = new List<Car>();
 
 
         //Create
@@ -58,6 +58,8 @@ namespace GreenPlan.repository
 
         public Car GetCarByMakeModelYear(string make, string model, int year)
         {
+            List<Car> _masterList = new List<Car>();
+            _masterList = _gasolineCarList.Concat(_electricCarList).Concat(_hybridCarList).ToList();
             foreach(Car x in _masterList)
             {
                 if(make == x.Make && model == x.Model && year == x.Year)
@@ -73,12 +75,66 @@ namespace GreenPlan.repository
 
 
         //Update
+        public bool UpdateCar(Car car)
+        {
+            List<Car> _masterList = new List<Car>();
+            _masterList = _gasolineCarList.Concat(_electricCarList).Concat(_hybridCarList).ToList();
+            foreach(Car existingCar in _masterList )
+            {
+                if(existingCar.Make == car.Make)
+                {
+                    existingCar.Make = car.Make;
+                    existingCar.Model = car.Model;
+                    existingCar.Year = car.Year;
+                    existingCar.ColorOptions = car.ColorOptions;
+                    existingCar.MPG = car.MPG;
+                    existingCar.BodyStyleOptions = car.BodyStyleOptions;
+                    existingCar.TransmissionOptions = car.TransmissionOptions;
+                    existingCar.Cylinders = car.Cylinders;
+                    existingCar.Price = car.Price;
+                    existingCar.DrivetrainOptions = car.DrivetrainOptions;
+                    existingCar.FuelTypeOptions = car.FuelTypeOptions;
+
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool UpdateCar(Car car, string make)
+        {
+            List<Car> _masterList = new List<Car>();
+            _masterList = _gasolineCarList.Concat(_electricCarList).Concat(_hybridCarList).ToList();
+            foreach(Car existingCar in _masterList )
+            {
+                if(existingCar.Make == make)
+                {
+                    existingCar.Make = car.Make;
+                    existingCar.Model = car.Model;
+                    existingCar.Year = car.Year;
+                    existingCar.ColorOptions = car.ColorOptions;
+                    existingCar.MPG = car.MPG;
+                    existingCar.BodyStyleOptions = car.BodyStyleOptions;
+                    existingCar.TransmissionOptions = car.TransmissionOptions;
+                    existingCar.Cylinders = car.Cylinders;
+                    existingCar.Price = car.Price;
+                    existingCar.DrivetrainOptions = car.DrivetrainOptions;
+                    existingCar.FuelTypeOptions = car.FuelTypeOptions;
+
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
 
 
         //Delete
         public bool DeleteCarFromMasterList(Car car)
         {
+            List<Car> _masterList = new List<Car>();
+            _masterList = _gasolineCarList.Concat(_electricCarList).Concat(_hybridCarList).ToList();
             int totalCarsInMasterList = _masterList.Count();
             
             _masterList.Remove(car);
@@ -86,9 +142,12 @@ namespace GreenPlan.repository
             if(totalCarsInMasterList == _masterList.Count())
             {
                 return false;
+            
             }
 
             return true;
+
+                
         }
 
 

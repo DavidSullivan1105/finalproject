@@ -140,6 +140,20 @@ namespace GreenPlan.ConsoleApp
                             "2. Gasoline \n" +
                             "3. Hybrid");
         }
+        public void EnterMakeToUpdate()
+        {
+            Console.WriteLine("Please enter a make to update: ");
+        }
+
+        public void EnterModelToUpdate()
+        {
+            Console.Write("Enter a model to update: ");
+        }
+
+        public void EnterYearToUpdate()
+        {
+            Console.Write("Enter a year to update: ");
+        }
 
         public void EnterMakeToDelete()
         {

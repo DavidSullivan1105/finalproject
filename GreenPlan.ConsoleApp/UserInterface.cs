@@ -42,7 +42,8 @@ namespace GreenPlan.ConsoleApp
                 CreateNewVehicles();
                 break;
                 case 5:
-                //UpdateExistingVehicles();
+                UpdateExistingVehicles();
+                break;
                 case 6:
                 DeleteVehicles();
                 break;
@@ -243,9 +244,241 @@ namespace GreenPlan.ConsoleApp
 
         }
 
+        private void UpdateExistingVehicles()
+        {
+            List<Car> allCars = _repo.GetMasterList();
+
+            _console.PrintAllCars(allCars);
+
+            _console.EnterMakeToUpdate();
+            string makeUpdate = _console.GetUserInput();
+
+            _console.EnterModelToUpdate();
+            string modelUpdate = _console.GetUserInput();
+
+            _console.EnterYearToUpdate();
+            int yearUpdate = _console.GetUserInputInt();
+
+            Car carToUpdate = _repo.GetCarByMakeModelYear(makeUpdate, modelUpdate, yearUpdate);
+
+            if (carToUpdate != null)
+            {
+                _console.PrintCars(carToUpdate);
+
+                Console.Write("New Make: ");
+                string updatedMake = _console.GetUserInput();
+
+                Console.Write("New Model: ");
+                string updatedModel = _console.GetUserInput();
+
+                Console.Write("New Year: ");
+                int updatedYear = _console.GetUserInputInt();
+
+                Console.WriteLine("New Color: \n"+
+                                "1. Red \n" +
+                            "2. Blue \n" +
+                            "3. Black \n" +
+                            "4. White \n" +
+                            "5. Yellow \n" +
+                            "6. Green \n" +
+                            "7. Silver \n" +
+                            "8. Tan \n");
+
+                int updatedColor = _console.GetUserInputInt();
+
+                Color newcolor = carToUpdate.ColorOptions;
+
+                switch(updatedColor)
+            {
+                case 1:
+                newcolor = Color.Red;
+                break;
+                case 2:
+                newcolor = Color.Blue;
+                break;
+                case 3:
+                newcolor = Color.Black;
+                break;
+                case 4:
+                newcolor = Color.White;
+                break;
+                case 5:
+                newcolor = Color.Yellow;
+                break;
+                case 6:
+                newcolor = Color.Green;
+                break;
+                case 7:
+                newcolor = Color.Silver;
+                break;
+                case 8:
+                newcolor = Color.Tan;
+                break;
+                
+            }
+
+            Console.Write("New MPG: ");
+            decimal updatedMPG = _console.GetUserDecimal();
+
+            Console.WriteLine("New body style: \n" +
+                            "1. Cargo Van \n" +
+                            "2. Convertible \n" +
+                            "3. Coupe \n" +
+                            "4. Hatchback \n" +
+                            "5. Minivan \n" +
+                            "6. Passenger Van \n" +
+                            "7. Pickup Truck \n" +
+                            "8. SUV \n" +
+                            "9. Sedan \n" +
+                            "10. Wagon \n");
+
+            int updatedBodyStyle = _console.GetUserInputInt();
+
+            BodyStyle newBody = carToUpdate.BodyStyleOptions;
+
+            switch(updatedBodyStyle)
+            {
+                case 1:
+                newBody = BodyStyle.CargoVan;
+                break;
+                case 2:
+                newBody = BodyStyle.Convertible;
+                break;
+                case 3:
+                newBody = BodyStyle.Coupe;
+                break;
+                case 4:
+                newBody = BodyStyle.Hatchback;
+                break;
+                case 5:
+                newBody = BodyStyle.Minivan;
+                break;
+                case 6:
+                newBody = BodyStyle.PassengerVan;
+                break;
+                case 7:
+                newBody = BodyStyle.PickupTruck;
+                break;
+                case 8:
+                newBody = BodyStyle.SUV;
+                break;
+                case 9:
+                newBody = BodyStyle.Sedan;
+                break;
+                case 10:
+                newBody = BodyStyle.Wagon;
+                break;
+            }
+
+            Console.WriteLine("New transmission: \n" +
+                            "1. Automatic \n" +
+                            "2. Manual");
+
+            int updatedTransmission = _console.GetUserInputInt();
+
+            Transmission newTrans = carToUpdate.TransmissionOptions;
+
+            switch(updatedTransmission)
+            {
+                case 1:
+                newTrans = Transmission.automatic;
+                break;
+                case 2:
+                newTrans = Transmission.manual;
+                break;
+            }
+
+            Console.Write("New cylinders: ");
+            int updatedCylinders = _console.GetUserInputInt();
+
+            Console.Write("New price: ");
+            decimal updatedPrice = _console.GetUserDecimal();
+
+            Console.WriteLine("New drivetrain: \n" +
+                            "1. All Wheel Drive \n" +
+                            "2. 4 Wheel Drive \n" +
+                            "3. Front Wheel Drive \n" +
+                            "4. Rear Wheel Drive");
+
+            int updatedDrivetrain = _console.GetUserInputInt();
+
+            Drivetrain newDrive = carToUpdate.DrivetrainOptions;
+
+            switch(updatedDrivetrain)
+            {
+                case 1:
+                newDrive = Drivetrain.AllWheelDrive;
+                break;
+                case 2:
+                newDrive = Drivetrain.FourWheelDrive;
+                break;
+                case 3:
+                newDrive = Drivetrain.FrontWheelDrive;
+                break;
+                case 4:
+                newDrive = Drivetrain.RearWheelDrive;
+                break;
+            }
+
+            Console.WriteLine("New Fueltype \n" +
+                            "1. Gasoline \n" +
+                            "2. Electric \n" +
+                            "3. Hybrid");
+
+            int updatedFuelType = _console.GetUserInputInt();
+
+            FuelType newfuel = carToUpdate.FuelTypeOptions;
+
+            switch(updatedFuelType)
+            {
+                case 1:
+                newfuel = FuelType.Gasoline;
+                break;
+                case 2:
+                newfuel = FuelType.Electric;
+                break;
+                case 3:
+                newfuel = FuelType.Hybrid;
+                break;
+            }
+
+            Car updatedCar = new Car(updatedMake, updatedModel, updatedYear, newcolor, updatedMPG, newBody, newTrans, updatedCylinders, updatedPrice, newDrive, newfuel);
+
+            if(updatedCar.Make == carToUpdate.Make)
+            {
+                bool isComplete = _repo.UpdateCar(updatedCar);
+                Console.WriteLine("Car successfully updated");
+            }
+            else
+            {
+                bool isComplete = _repo.UpdateCar(updatedCar, carToUpdate.Make);
+                Console.WriteLine("Car succesfully updated");
+
+
+            }
+            
+            
+
+
+
+
+
+            }
+            else
+            {
+                _console.CarNotFound();
+                _console.PressAnyKeyToContinue();
+            }
+
+
+
+
+        }
+
         private void DeleteVehicles()
         {
             List<Car> allCars = _repo.GetMasterList();
+            
 
             _console.PrintAllCars(allCars);
 
@@ -266,6 +499,7 @@ namespace GreenPlan.ConsoleApp
                 if(isSuccess)
                 {
                     _console.CarSuccessfullyDeleted();
+                    
                 }
                 else
                 {
@@ -276,7 +510,10 @@ namespace GreenPlan.ConsoleApp
             {
                 _console.CarNotFound();
             }
-            _console.PressAnyKeyToContinue();
+            
+            
+            
+            //_console.PressAnyKeyToContinue();
         }
 
         private void Exit()
