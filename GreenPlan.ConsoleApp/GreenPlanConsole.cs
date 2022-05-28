@@ -170,73 +170,6 @@ namespace GreenPlan.ConsoleApp
             Console.Write("Enter a year to delete: ");
         }
 
-        public void EnterColorToDelete()
-        {
-            Console.WriteLine("Choose number you wish to delete: \n" +
-                            "1. Red \n" +
-                            "2. Blue \n" +
-                            "3. Black \n" +
-                            "4. White \n" +
-                            "5. Yellow \n" +
-                            "6. Green \n" +
-                            "7. Sliver \n" +
-                            "8. Tan ");
-        } 
-
-        public void EnterMPGToDelete()
-        {
-            Console.Write("Enter MPG to delete: ");
-        }
-
-        public void EnterBodyStyleToDelete()
-        {
-            Console.WriteLine("Choose a body style to delete: \n" +
-                            "1. Cargo Van \n" +
-                            "2. Convertible \n" +
-                            "3. Coupe \n" +
-                            "4. Hatchback \n" +
-                            "5. Minivan \n" +
-                            "6. Passenger Van \n" +
-                            "7. Pickup Truck \n" +
-                            "8. SUV \n" +
-                            "9. Sedan \n" +
-                            "10. Wagon");
-        }
-
-        public void EnterTransmissionToDelete()
-        {
-            Console.WriteLine("Choose a transmission style to delete: \n" +
-                            "1.Automatic \n" +
-                            "2. Manual ");
-        }
-
-        public void EnterCylindersToDelete()
-        {
-            Console.Write("Enter cylinders to delete: ");
-        }
-
-        public void EnterPriceToDelete()
-        {
-            Console.Write("Enter price to delete: ");
-        }
-
-        public void EnterDrivetrainToDelete()
-        {
-            Console.WriteLine("Choose a drivetrain to delete: \n" +
-                            "1. All Wheel Drive \n" +
-                            "2. 4 Wheel Drive \n" +
-                            "3. Front Wheel Drive \n" +
-                            "4. Rear Wheel Drive ");
-        }
-
-        public void EnterFuelTypeToDelete()
-        {
-            Console.WriteLine("Choose a fueltype to delete: \n" +
-                            "1. Electric \n" +
-                            "2. Gasoline \n" +
-                            "3. Hybrid");
-        }
-        
         public void CarSuccessfullyDeleted()
         {
             Console.WriteLine("Car successfully deleted!");
@@ -267,3 +200,4 @@ namespace GreenPlan.ConsoleApp
         }
     }
 } 
+        

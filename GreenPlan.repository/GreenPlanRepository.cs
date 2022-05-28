@@ -150,6 +150,22 @@ namespace GreenPlan.repository
                 
         }
 
+        public void RemoveCarFromGasList(Car car)
+        {
+            _gasolineCarList.Remove(car);
+
+        }
+
+        public void RemoveCarFromElectricList(Car car)
+        {
+            _electricCarList.Remove(car);
+        }
+
+        public void RemoveCarFromHybridList(Car car)
+        {
+            _hybridCarList.Remove(car);
+        }
+
 
 
         //Seed Data Method

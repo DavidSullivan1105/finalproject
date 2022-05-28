@@ -499,6 +499,18 @@ namespace GreenPlan.ConsoleApp
                 if(isSuccess)
                 {
                     _console.CarSuccessfullyDeleted();
+                    switch(carToDelete.FuelTypeOptions)
+                    {
+                        case FuelType.Gasoline:
+                        _repo.RemoveCarFromGasList(carToDelete);
+                        break;
+                        case FuelType.Electric:
+                        _repo.RemoveCarFromElectricList(carToDelete);
+                        break;
+                        case FuelType.Hybrid:
+                        _repo.RemoveCarFromHybridList(carToDelete);
+                        break;
+                    }
                     
                 }
                 else
@@ -510,7 +522,7 @@ namespace GreenPlan.ConsoleApp
             {
                 _console.CarNotFound();
             }
-             
+            
             
             
             //_console.PressAnyKeyToContinue();
