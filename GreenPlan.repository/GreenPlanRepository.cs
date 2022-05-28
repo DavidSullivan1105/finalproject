@@ -73,11 +73,9 @@ namespace GreenPlan.repository
 
             Car[] carArr = {maverick, prius, sorento, accord, enclave, hhr, modelx, volt};
 
-            FuelType fuelType = FuelType.Gasoline;
-
             foreach(Car car in carArr)
             {
-                switch(fuelType)
+                switch(car.FuelTypeOptions)
                 {
                     case FuelType.Gasoline:
                     AddGasolineCarToList(car);
@@ -95,4 +93,5 @@ namespace GreenPlan.repository
 
         }
     }
+
 }

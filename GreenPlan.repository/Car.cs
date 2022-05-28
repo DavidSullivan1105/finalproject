@@ -28,13 +28,13 @@ namespace GreenPlan.repository
 
         public FuelType FuelTypeOptions { get; set; }
 
-        public Car (string make, string model, int year, Color color, decimal MPG, BodyStyle bodyStyle, Transmission transmission, int cylinders, decimal price, Drivetrain drivetrain, FuelType fueltype )
+        public Car (string make, string model, int year, Color color, decimal mpg, BodyStyle bodyStyle, Transmission transmission, int cylinders, decimal price, Drivetrain drivetrain, FuelType fueltype )
         {
             Make = make;
             Model = model;
             Year = year;
             ColorOptions = color;
-            MPG = MPG;
+            MPG = mpg;
             BodyStyleOptions = bodyStyle;
             TransmissionOptions = transmission;
             Cylinders = cylinders;
