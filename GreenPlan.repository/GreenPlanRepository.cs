@@ -11,7 +11,7 @@ namespace GreenPlan.repository
         public List<Car> _gasolineCarList = new List<Car>();
         public List<Car> _hybridCarList = new List<Car>();
         public List<Car> _electricCarList = new List<Car>(); 
-
+        public List<Car> _masterList = new List<Car>();
 
 
         //Create
@@ -32,6 +32,7 @@ namespace GreenPlan.repository
 
 
 
+
         //Read
         public List<Car> GetGasolineVehicles()
         {
@@ -48,6 +49,27 @@ namespace GreenPlan.repository
             return _electricCarList;
         }
 
+        public List<Car> GetMasterList()
+        {
+            List<Car> _masterList = new List<Car>();
+            _masterList = _gasolineCarList.Concat(_electricCarList).Concat(_hybridCarList).ToList();
+            return _masterList;
+        }
+
+        public Car GetCarByMakeModelYear(string make, string model, int year)
+        {
+            foreach(Car x in _masterList)
+            {
+                if(make == x.Make && model == x.Model && year == x.Year)
+                {
+                    return x;
+                }
+            }
+                return null;
+        }
+
+
+
 
 
         //Update
@@ -55,6 +77,19 @@ namespace GreenPlan.repository
 
 
         //Delete
+        public bool DeleteCarFromMasterList(Car car)
+        {
+            int totalCarsInMasterList = _masterList.Count();
+            
+            _masterList.Remove(car);
+
+            if(totalCarsInMasterList == _masterList.Count())
+            {
+                return false;
+            }
+
+            return true;
+        }
 
 
 

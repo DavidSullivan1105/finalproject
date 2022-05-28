@@ -44,7 +44,8 @@ namespace GreenPlan.ConsoleApp
                 case 5:
                 //UpdateExistingVehicles();
                 case 6:
-                //DeleteVehicles();
+                DeleteVehicles();
+                break;
                 case 7:
                 Exit();
                 break;
@@ -227,10 +228,55 @@ namespace GreenPlan.ConsoleApp
 
             Car newCar = new Car(newMake, newModel, newYear, color, newMPG, bodyStyle, transmission, newCylinders, newPrice, drivetrain, fuelType);
 
-            _repo.AddGasolineCarToList(newCar);
-            _repo.AddElectricCarToList(newCar);
-            _repo.AddHybridCarToList(newCar);
+            switch(newCar.FuelTypeOptions)
+            {
+                case FuelType.Gasoline:
+                _repo.AddGasolineCarToList(newCar);
+                break;
+                case FuelType.Electric:
+                _repo.AddElectricCarToList(newCar);
+                break;
+                case FuelType.Hybrid:
+                _repo.AddHybridCarToList(newCar);
+                break;
+            }
 
+        }
+
+        private void DeleteVehicles()
+        {
+            List<Car> allCars = _repo.GetMasterList();
+
+            _console.PrintAllCars(allCars);
+
+            _console.EnterMakeToDelete();
+            string deleteMake = _console.GetUserInput();
+
+            _console.EnterModelToDelete();
+            string deleteModel = _console.GetUserInput();
+
+            _console.EnterYearToDelete();
+            int deleteYear = _console.GetUserInputInt();
+
+            Car carToDelete = _repo.GetCarByMakeModelYear(deleteMake, deleteModel, deleteYear);
+
+            if(carToDelete != null)
+            {
+                bool isSuccess = _repo.DeleteCarFromMasterList(carToDelete);
+                if(isSuccess)
+                {
+                    _console.CarSuccessfullyDeleted();
+                }
+                else
+                {
+                    _console.SomethingWentWrong();
+                }
+            }
+            else
+            {
+                _console.CarNotFound();
+            }
+            _console.PressAnyKeyToContinue();
         }
 
         private void Exit()
